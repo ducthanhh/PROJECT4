@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Phòng Khám</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Danh sách Bác sĩ</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Bác sĩ</th>
+                <th>Chuyên khoa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for BacSi in BacSis  %}
+            <tr>
+                <td>{{ BacSi.id }}</td>
+                <td>{{ BacSi.ten_bac_si }}</td>
+                <td>{{ BacSi.chuyen_khoa }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Danh sách Bệnh nhân</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Bệnh nhân</th>
+                <th>Tuổi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for BenhNhan  in BenhNhans %}
+            <tr>
+                <td>{{ BenhNhan .id }}</td>
+                <td>{{ BenhNhan .ten_benh_nhan }}</td>
+                <td>{{ BenhNhan .tuoi }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
