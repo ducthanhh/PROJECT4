@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm Bệnh nhân</title>
+</head>
+<body>
+    <h1>Thêm Bệnh nhân mới</h1>
+    <form method="POST">
+        <label>Họ tên:</label><br>
+        <input type="text" name="ho_ten" required><br><br>
+
+        <label>Ngày sinh:</label><br>
+        <input type="date" name="ngay_sinh" required><br><br>
+
+        <label>Giới tính:</label><br>
+        <select name="gioi_tinh" required>
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+        </select><br><br>
+
+        <label>Số điện thoại:</label><br>
+        <input type="text" name="so_dien_thoai"><br><br>
+
+        <label>Địa chỉ:</label><br>
+        <input type="text" name="dia_chi"><br><br>
+
+        <button type="submit">Thêm</button>
+    </form>
+    <br>
+    <a href="/">← Quay lại trang chủ</a>
+</body>
+</html>
