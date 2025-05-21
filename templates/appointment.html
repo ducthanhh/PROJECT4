@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lịch khám</title>
+</head>
+<body>
+    <h1>Danh sách lịch khám</h1>
+    <table border="1">
+        <tr>
+            <th>Bệnh nhân</th>
+            <th>Bác sĩ</th>
+            <th>Thời gian hẹn</th>
+            <th>Tình trạng</th>
+            <th>Triệu chứng</th>
+        </tr>
+        {% for a in appointments %}
+        <tr>
+            <td>{{ a.ten_benh_nhan }}</td>
+            <td>{{ a.ten_bac_si }}</td>
+            <td>{{ a.thoi_gian_hen }}</td>
+            <td>{{ a.tinh_trang }}</td>
+            <td>{{ a.trieu_chung }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('index') }}">Quay lại</a>
+</body>
+</html>

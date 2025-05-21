@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách bệnh nhân</title>
+</head>
+<body>
+    <h1>Danh sách bệnh nhân</h1>
+    <a href="{{ url_for('add_patient') }}">Thêm bệnh nhân</a>
+    <table border="1">
+        <tr>
+            <th>Họ tên</th>
+            <th>Ngày sinh</th>
+            <th>Giới tính</th>
+            <th>Số điện thoại</th>
+            <th>Địa chỉ</th>
+            <th>Hành động</th>
+        </tr>
+        {% for p in patients %}
+        <tr>
+            <td>{{ p.ho_ten }}</td>
+            <td>{{ p.ngay_sinh }}</td>
+            <td>{{ p.gioi_tinh }}</td>
+            <td>{{ p.so_dien_thoai }}</td>
+            <td>{{ p.dia_chi }}</td>
+            <td>
+                <a href="{{ url_for('edit_patient', id=p.id) }}">Sửa</a> |
+                <a href="{{ url_for('delete_patient', id=p.id) }}" onclick="return confirm('Bạn chắc chắn xóa?')">Xóa</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('index') }}">Quay lại</a>
+</body>
+</html>

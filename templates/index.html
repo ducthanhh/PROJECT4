@@ -2,24 +2,46 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Quản lý Phòng khám</title>
+    <title>Trang quản trị phòng khám</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            padding: 40px;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .menu {
+            margin-top: 40px;
+        }
+        .menu a {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 14px 28px;
+            margin: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .menu a:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-    <h1>Danh sách Bác sĩ</h1>
-    <ul>
-        {% for doctor in doctors %}
-        <li>{{ doctor.ho_ten }} - {{ doctor.chuyen_khoa }} - {{ doctor.so_dien_thoai }}</li>
-        {% endfor %}
-    </ul>
-    <a href="/add-doctor">➕ Thêm Bác sĩ mới</a>
+    <h1>Xin chào, Quản trị viên!</h1>
+    <p>Chào mừng bạn đến với hệ thống quản lý phòng khám.</p>
 
-    <h1>Danh sách Bệnh nhân</h1>
-    <ul>
-        {% for patient in patients %}
-        <li>{{ patient.ho_ten }} - {{ patient.ngay_sinh }} - {{ patient.gioi_tinh }}</li>
-        {% endfor %}
-    </ul>
-    <a href="/add-patient">➕ Thêm Bệnh nhân mới</a>
-
+    <div class="menu">
+        <a href="{{ url_for('doctor') }}">Quản lý bác sĩ</a>
+        <a href="{{ url_for('patient') }}">Quản lý bệnh nhân </a>
+        <a href="{{ url_for('appointment') }}">Quản lý lịch khám</a>
+        <a href="{{ url_for('medicine') }}">Quản lý thuốc</a>
+        <a href="{{ url_for('logout') }}" style="background-color: #e74c3c;">Đăng xuất</a>
+    </div>
 </body>
 </html>

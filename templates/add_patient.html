@@ -1,33 +1,28 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Thêm Bệnh nhân</title>
+    <title>Thêm Bệnh Nhân</title>
 </head>
 <body>
-    <h1>Thêm Bệnh nhân mới</h1>
+    <h1>Thêm Bệnh Nhân Mới</h1>
     <form method="POST">
-        <label>Họ tên:</label><br>
-        <input type="text" name="ho_ten" required><br><br>
-
-        <label>Ngày sinh:</label><br>
-        <input type="date" name="ngay_sinh" required><br><br>
-
-        <label>Giới tính:</label><br>
+        <label>Họ Tên:</label><br>
+        <input type="text" name="ho_ten" required><br>
+        <label>Ngày Sinh:</label><br>
+        <input type="date" name="ngay_sinh" required><br>
+        <label>Giới Tính:</label><br>
         <select name="gioi_tinh" required>
+            <option value="">--Chọn--</option>
             <option value="Nam">Nam</option>
             <option value="Nữ">Nữ</option>
-        </select><br><br>
-
-        <label>Số điện thoại:</label><br>
-        <input type="text" name="so_dien_thoai"><br><br>
-
-        <label>Địa chỉ:</label><br>
-        <input type="text" name="dia_chi"><br><br>
-
+        </select><br>
+        <label>Số Điện Thoại:</label><br>
+        <input type="text" name="so_dien_thoai" required><br>
+        <label>Địa Chỉ:</label><br>
+        <input type="text" name="dia_chi" required><br><br>
         <button type="submit">Thêm</button>
     </form>
     <br>
-    <a href="/">← Quay lại trang chủ</a>
+    <a href="{{ url_for('patient') }}">Quay lại danh sách bệnh nhân</a>
 </body>
 </html>
