@@ -3,30 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <title>Danh sách bác sĩ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f7f9fb;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        a.button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+
+        a.button:hover {
+            background-color: #2980b9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #ecf0f1;
+            color: #333;
+        }
+
+        .actions a {
+            margin-right: 10px;
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .actions a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer-link a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .footer-link a:hover {
+            color: #000;
+        }
+    </style>
 </head>
 <body>
+
+<header>
     <h1>Danh sách bác sĩ</h1>
-    <a href="{{ url_for('add_doctor') }}">Thêm bác sĩ</a>
-    <table border="1">
-        <tr>
-            <th>Họ tên</th>
-            <th>Chuyên khoa</th>
-            <th>Số điện thoại</th>
-            <th>Hành động</th>
-        </tr>
-        {% for d in doctors %}
-        <tr>
-            <td>{{ d.ho_ten }}</td>
-            <td>{{ d.chuyen_khoa }}</td>
-            <td>{{ d.so_dien_thoai }}</td>
-            <td>
-                <a href="{{ url_for('add_doctor') }}">Thêm bác sĩ</a>
-                <a href="{{ url_for('edit_doctor', id=d.id) }}">Sửa</a> | 
-                <a href="{{ url_for('delete_doctor', id=d.id) }}" onclick="return confirm('Bạn chắc chắn xóa?')">Xóa</a>
-            </td>
-        </tr>
-        {% endfor %}
+</header>
+
+<div class="container">
+    <a href="{{ url_for('add_doctor') }}" class="button">➕ Thêm bác sĩ</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Họ tên</th>
+                <th>Chuyên khoa</th>
+                <th>Số điện thoại</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in doctors %}
+            <tr>
+                <td>{{ d.ho_ten }}</td>
+                <td>{{ d.chuyen_khoa }}</td>
+                <td>{{ d.so_dien_thoai }}</td>
+                <td class="actions">
+                    <a href="{{ url_for('edit_doctor', id=d.id) }}">✏️ Sửa</a>
+                    <a href="{{ url_for('delete_doctor', id=d.id) }}" onclick="return confirm('Bạn chắc chắn muốn xóa bác sĩ này?')">🗑️ Xóa</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
-    <a href="{{ url_for('index') }}">Quay lại</a>
+
+    <div class="footer-link">
+        <a href="{{ url_for('dashboard') }}">← Quay về Trang quản trị</a>
+    </div>
+</div>
+
 </body>
 </html>

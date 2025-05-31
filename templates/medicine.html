@@ -3,23 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Danh sách thuốc</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Danh sách thuốc</h1>
-    <table border="1">
-        <tr>
-            <th>Tên thuốc</th>
-            <th>Đơn vị</th>
-            <th>Số lượng</th>
-        </tr>
-        {% for t in medicines %}
-        <tr>
-            <td>{{ t.ten_thuoc }}</td>
-            <td>{{ t.don_vi }}</td>
-            <td>{{ t.so_luong }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <a href="{{ url_for('index') }}">Quay lại</a>
+    <div class="container">
+        <h1>Danh sách thuốc</h1>
+        <a href="{{ url_for('add_medicine') }}" class="btn">+ Thêm thuốc mới</a>
+        <!-- Thêm chức năng thêm thuốc nếu bạn có route -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Tên thuốc</th>
+                    <th>Đơn vị</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in medicines %}
+                <tr>
+                    <td>{{ m.ten_thuoc }}</td>
+                    <td>{{ m.don_vi }}</td>
+                    <td>{{ m.so_luong }}</td>
+                    <td>{{ m.gia }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('dashboard') }}" class="btn-back">← Về trang quản trị</a>
+    </div>
 </body>
 </html>

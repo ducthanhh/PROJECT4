@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Bệnh Nhân</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Màu nền cho trang */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2980b9; /* Màu cho tiêu đề chính */
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c3e50; /* Màu cho tiêu đề phụ */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Gộp các đường viền */
+            margin-top: 20px;
+            background-color: #ffffff; /* Màu nền cho bảng */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng cho bảng */
+        }
+
+        th, td {
+            padding: 12px; /* Khoảng cách bên trong ô */
+            text-align: left; /* Căn trái cho văn bản */
+            border-bottom: 1px solid #ddd; /* Đường viền dưới cho ô */
+        }
+
+        th {
+            background-color: #2980b9; /* Màu nền cho tiêu đề bảng */
+            color: white; /* Màu chữ cho tiêu đề bảng */
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* Màu nền khi di chuột qua hàng */
+        }
+    </style>
+</head>
+<body>
+    <h1>Xin chào {{ session.ten_dang_nhap }}</h1>
+  <p><a href="{{ url_for('dat_lich_kham') }}">➕ Đặt lịch khám mới</a></p>
+
+
+    <h2>📅 Lịch hẹn của bạn</h2>
+    <table>
+        <tr>
+            <th>Thời gian</th>
+            <th>Bác sĩ</th>
+            <th>Tình trạng</th>
+            <th>Triệu chứng</th>
+        </tr>
+        {% for lich in lich_hen %}
+        <tr>
+            <td>{{ lich.thoi_gian_hen }}</td>
+            <td>{{ lich.ten_bac_si }}</td>
+            <td>{{ lich.tinh_trang }}</td>
+            <td>{{ lich.trieu_chung }}</td>
+           
+        </tr>
+        {% endfor %}
+        <a href="{{ url_for('logoutuser') }}">🔓 Đăng xuất</a>
+
+    </table>
+</body>
+</html>

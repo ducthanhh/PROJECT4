@@ -1,0 +1,130 @@
+/* Tổng thể */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #ecf0f1, #fdfdfd);
+    margin: 0;
+    padding: 0;
+    color: #2c3e50;
+}
+
+/* Container trung tâm */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Tiêu đề */
+h1 {
+    text-align: center;
+    color: #2980b9;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+/* Bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+thead {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #ecf0f1;
+}
+
+/* Nút */
+a.btn, .btn-edit, .btn-delete, .btn-back {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 6px 4px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a.btn {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.btn-edit {
+    background-color: #f39c12;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-back {
+    background-color: #34495e;
+    color: white;
+}
+
+a.btn:hover,
+.btn-edit:hover,
+.btn-delete:hover,
+.btn-back:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Hiệu ứng */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    td {
+        padding: 10px;
+        text-align: left;
+        border: none;
+        position: relative;
+    }
+
+    td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 6px;
+        color: #7f8c8d;
+    }
+    
+}

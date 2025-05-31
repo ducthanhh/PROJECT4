@@ -3,33 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Danh sách bệnh nhân</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Danh sách bệnh nhân</h1>
-    <a href="{{ url_for('add_patient') }}">Thêm bệnh nhân</a>
-    <table border="1">
-        <tr>
-            <th>Họ tên</th>
-            <th>Ngày sinh</th>
-            <th>Giới tính</th>
-            <th>Số điện thoại</th>
-            <th>Địa chỉ</th>
-            <th>Hành động</th>
-        </tr>
-        {% for p in patients %}
-        <tr>
-            <td>{{ p.ho_ten }}</td>
-            <td>{{ p.ngay_sinh }}</td>
-            <td>{{ p.gioi_tinh }}</td>
-            <td>{{ p.so_dien_thoai }}</td>
-            <td>{{ p.dia_chi }}</td>
-            <td>
-                <a href="{{ url_for('edit_patient', id=p.id) }}">Sửa</a> |
-                <a href="{{ url_for('delete_patient', id=p.id) }}" onclick="return confirm('Bạn chắc chắn xóa?')">Xóa</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-    <a href="{{ url_for('index') }}">Quay lại</a>
+    <div class="container">
+        <h1>Danh sách bệnh nhân</h1>
+        <a href="{{ url_for('add_patient') }}" class="btn">+ Thêm bệnh nhân</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Họ tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Giới tính</th>
+                    <th>SĐT</th>
+                    <th>Địa chỉ</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in patients %}
+                <tr>
+                    <td>{{ p.ho_ten }}</td>
+                    <td>{{ p.ngay_sinh }}</td>
+                    <td>{{ p.gioi_tinh }}</td>
+                    <td>{{ p.so_dien_thoai }}</td>
+                    <td>{{ p.dia_chi }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_patient', id=p.id) }}" class="btn-edit">Sửa</a>
+                        <a href="{{ url_for('delete_patient', id=p.id) }}" class="btn-delete" onclick="return confirm('Bạn chắc chắn xóa?')">Xóa</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('dashboard') }}" class="btn-back">← Về trang quản trị</a>
+    </div>
 </body>
 </html>

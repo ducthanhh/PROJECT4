@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa lịch hẹn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sửa lịch hẹn</h1>
+        <form method="POST">
+            <label>Triệu chứng:</label>
+            <textarea name="trieu_chung" required>{{ appointment.trieu_chung }}</textarea><br><br>
+
+            <label>Thời gian hẹn:</label>
+            <input type="datetime-local" name="thoi_gian_hen" value="{{ appointment.thoi_gian_hen|replace(' ', 'T') }}" required><br><br>
+
+            <label>Tình trạng:</label>
+            <select name="tinh_trang">
+                <option value="Chưa khám" {% if appointment.tinh_trang == 'Chưa khám' %}selected{% endif %}>Chưa khám</option>
+                <option value="Đã khám" {% if appointment.tinh_trang == 'Đã khám' %}selected{% endif %}>Đã khám</option>
+            </select><br><br>
+
+            <button type="submit" class="btn-edit">Cập nhật</button>
+            <a href="{{ url_for('appointment') }}" class="btn-back">← Quay lại</a>
+        </form>
+    </div>
+</body>
+</html>

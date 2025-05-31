@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa người dùng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Sửa thông tin người dùng</h2>
+    <form method="POST">
+        <label>Tên đăng nhập:</label>
+        <input type="text" name="ten_dang_nhap" value="{{ user.ten_dang_nhap }}" required>
+
+        <label>Mật khẩu:</label>
+        <input type="text" name="mat_khau" value="{{ user.mat_khau }}" required>
+
+        <label>Vai trò:</label>
+        <select name="vai_tro" required>
+            <option value="admin" {% if user.vai_tro == 'admin' %}selected{% endif %}>Admin</option>
+            <option value="bac_si" {% if user.vai_tro == 'bac_si' %}selected{% endif %}>Bác sĩ</option>
+            <option value="benh_nhan" {% if user.vai_tro == 'benh_nhan' %}selected{% endif %}>Bệnh nhân</option>
+        </select>
+
+        <button type="submit" class="btn">Cập nhật</button>
+        <a href="{{ url_for('users') }}" class="btn btn-secondary">Quay lại</a>
+    </form>
+</div>
+</body>
+</html>

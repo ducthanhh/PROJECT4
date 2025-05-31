@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa thông tin thuốc</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sửa thông tin thuốc</h1>
+        <form method="POST">
+            <label>Tên thuốc:</label>
+            <input type="text" name="ten_thuoc" value="{{ medicine.ten_thuoc }}" required><br><br>
+
+            <label>Đơn vị:</label>
+            <input type="text" name="don_vi" value="{{ medicine.don_vi }}" required><br><br>
+
+            <label>Giá:</label>
+            <input type="number" name="gia" value="{{ medicine.gia }}" required><br><br>
+
+            <button type="submit" class="btn-edit">Cập nhật</button>
+            <a href="{{ url_for('medicine') }}" class="btn-back">← Quay lại</a>
+        </form>
+    </div>
+</body>
+</html>

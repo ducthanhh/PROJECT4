@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Thêm Bệnh Nhân</title>
+    <title>Thêm Thuốc</title>
     <style>
         /* Tổng thể */
         html, body {
@@ -32,10 +32,10 @@
         }
 
         /* Tiêu đề */
-        h1 {
+        h2 {
             color: #2980b9;
             margin-bottom: 30px;
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 700;
         }
 
@@ -55,7 +55,8 @@
         }
 
         input[type="text"],
-        input[type="date"],
+        input[type="number"],
+        input[type="datetime-local"],
         select {
             padding: 12px 14px;
             border: 1px solid #bdc3c7;
@@ -67,7 +68,8 @@
         }
 
         input[type="text"]:focus,
-        input[type="date"]:focus,
+        input[type="number"]:focus,
+        input[type="datetime-local"]:focus,
         select:focus {
             border-color: #2980b9;
             outline: none;
@@ -92,7 +94,7 @@
         }
 
         /* Nút quay lại */
-        a.btn-back {
+        a.btn-secondary {
             display: inline-block;
             padding: 10px 18px;
             border-radius: 6px;
@@ -104,7 +106,7 @@
             margin-top: 20px;
         }
 
-        a.btn-back:hover {
+        a.btn-secondary:hover {
             background-color: #2c3e50;
             transform: translateY(-2px);
         }
@@ -126,30 +128,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Thêm Bệnh Nhân Mới</h1>
+        <h2>Thêm thuốc mới</h2>
         <form method="POST">
-            <label for="ho_ten">Họ Tên:</label>
-            <input type="text" id="ho_ten" name="ho_ten" required>
+            <label>Tên thuốc:</label>
+            <input type="text" name="ten_thuoc" required>
 
-            <label for="ngay_sinh">Ngày Sinh:</label>
-            <input type="date" id="ngay_sinh" name="ngay_sinh" required>
+            <label>Đơn vị:</label>
+            <input type="text" name="don_vi" required>
 
-            <label for="gioi_tinh">Giới Tính:</label>
-            <select id="gioi_tinh" name="gioi_tinh" required>
-                <option value="">--Chọn--</option>
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-            </select>
+            <label>Giá bán:</label>
+            <input type="number" name="gia" required>
 
-            <label for="so_dien_thoai">Số Điện Thoại:</label>
-            <input type="text" id="so_dien_thoai" name="so_dien_thoai" required>
-
-            <label for="dia_chi">Địa Chỉ:</label>
-            <input type="text" id="dia_chi" name="dia_chi" required>
-
-            <button type="submit">Thêm</button>
+            <button type="submit" class="btn">Lưu</button>
+            <a href="{{ url_for('medicine') }}" class="btn btn-secondary">Quay lại</a>
         </form>
-        <a class="btn-back" href="{{ url_for('patient') }}">Quay lại danh sách bệnh nhân</a>
     </div>
 </body>
 </html>

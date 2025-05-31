@@ -3,27 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Lịch khám</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Danh sách lịch khám</h1>
-    <table border="1">
-        <tr>
-            <th>Bệnh nhân</th>
-            <th>Bác sĩ</th>
-            <th>Thời gian hẹn</th>
-            <th>Tình trạng</th>
-            <th>Triệu chứng</th>
-        </tr>
-        {% for a in appointments %}
-        <tr>
-            <td>{{ a.ten_benh_nhan }}</td>
-            <td>{{ a.ten_bac_si }}</td>
-            <td>{{ a.thoi_gian_hen }}</td>
-            <td>{{ a.tinh_trang }}</td>
-            <td>{{ a.trieu_chung }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <a href="{{ url_for('index') }}">Quay lại</a>
+    <div class="container">
+        <h1>Lịch khám</h1>
+        <a href="{{ url_for('add_appointment') }}" class="btn">+ Thêm lịch hẹn mới</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Bệnh nhân</th>
+                    <th>Bác sĩ</th>
+                    <th>Thời gian hẹn</th>
+                    <th>Triệu chứng</th>
+                    <th>Tình trạng</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in appointments %}
+                <tr>
+                    <td>{{ a.ten_benh_nhan }}</td>
+                    <td>{{ a.ten_bac_si }}</td>
+                    <td>{{ a.thoi_gian_hen }}</td>
+                    <td>{{ a.trieu_chung }}</td>
+                    <td>{{ a.tinh_trang }}</td>
+                
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('dashboard') }}" class="btn-back">← Về trang quản trị</a>
+    </div>
 </body>
 </html>

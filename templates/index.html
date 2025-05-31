@@ -1,47 +1,127 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Trang quản trị phòng khám</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+        /* Reset một số style cơ bản */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            padding: 40px;
-            text-align: center;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 50px 20px;
+            color: #1e293b;
         }
+
         h1 {
-            color: #2c3e50;
+            font-weight: 700;
+            font-size: 2.8rem;
+            margin-bottom: 0.3em;
+            color: #0f172a;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
         }
+
+        p {
+            font-size: 1.2rem;
+            color: #334155;
+            margin-bottom: 3rem;
+            max-width: 500px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
         .menu {
-            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            width: 100%;
+            max-width: 700px;
         }
+
         .menu a {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 14px 28px;
-            margin: 10px;
-            border-radius: 8px;
+            background: white;
+            padding: 25px 20px;
+            border-radius: 16px;
             text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+            color: #334155;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            overflow: hidden;
         }
+
+        /* Hiệu ứng nổi lên */
         .menu a:hover {
-            background-color: #2980b9;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            color: #2563eb;
+            background-color: #e0e7ff;
+        }
+
+        /* Nút Đăng xuất khác màu nổi bật */
+        .menu a.logout {
+            background-color: #ef4444;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+        }
+        .menu a.logout:hover {
+            background-color: #b91c1c;
+            box-shadow: 0 12px 30px rgba(185, 28, 28, 0.6);
+            color: #fef2f2;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .menu {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <h1>Xin chào, Quản trị viên!</h1>
-    <p>Chào mừng bạn đến với hệ thống quản lý phòng khám.</p>
+    <p>Chào mừng bạn đến với hệ thống quản lý phòng khám hiện đại và thân thiện.</p>
+    {% if session['vai_tro'] == 'admin' %}
+  <a href="/them_bac_si">Thêm bác sĩ</a>
+  <a href="/quan_ly_lich_kham">Quản lý lịch khám</a>
+{% endif %}
+
 
     <div class="menu">
         <a href="{{ url_for('doctor') }}">Quản lý bác sĩ</a>
-        <a href="{{ url_for('patient') }}">Quản lý bệnh nhân </a>
+        <a href="{{ url_for('patient') }}">Quản lý bệnh nhân</a>
         <a href="{{ url_for('appointment') }}">Quản lý lịch khám</a>
         <a href="{{ url_for('medicine') }}">Quản lý thuốc</a>
-        <a href="{{ url_for('logout') }}" style="background-color: #e74c3c;">Đăng xuất</a>
+        <a href="{{ url_for('logout') }}" class="logout">Đăng xuất</a>
+         <a href="{{ url_for('users') }}">Quản lý người dùng </a>
+         <a href="{{ url_for('home') }}" class="btn-back">← Về trang web chính</a>
     </div>
 </body>
 </html>

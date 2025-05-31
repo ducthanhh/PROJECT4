@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa thông tin bệnh nhân</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sửa thông tin bệnh nhân</h1>
+        <form method="POST">
+            <label>Họ tên:</label>
+            <input type="text" name="ho_ten" value="{{ patient.ho_ten }}" required><br><br>
+
+            <label>Ngày sinh:</label>
+            <input type="date" name="ngay_sinh" value="{{ patient.ngay_sinh }}" required><br><br>
+
+            <label>Giới tính:</label>
+            <select name="gioi_tinh" required>
+                <option value="Nam" {% if patient.gioi_tinh == 'Nam' %}selected{% endif %}>Nam</option>
+                <option value="Nữ" {% if patient.gioi_tinh == 'Nữ' %}selected{% endif %}>Nữ</option>
+            </select><br><br>
+
+            <label>Số điện thoại:</label>
+            <input type="text" name="so_dien_thoai" value="{{ patient.so_dien_thoai }}" required><br><br>
+
+            <label>Địa chỉ:</label>
+            <input type="text" name="dia_chi" value="{{ patient.dia_chi }}" required><br><br>
+
+            <button type="submit" class="btn-edit">Cập nhật</button>
+            <a href="{{ url_for('patient') }}" class="btn-back">← Quay lại</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa thông tin bác sĩ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sửa thông tin bác sĩ</h1>
+        <form method="POST">
+            <label>Họ tên:</label>
+            <input type="text" name="ho_ten" value="{{ doctor.ho_ten }}" required><br><br>
+
+            <label>Chuyên khoa:</label>
+            <input type="text" name="chuyen_khoa" value="{{ doctor.chuyen_khoa }}" required><br><br>
+
+            <label>Số điện thoại:</label>
+            <input type="text" name="so_dien_thoai" value="{{ doctor.so_dien_thoai }}" required><br><br>
+
+            <button type="submit" class="btn-edit">Cập nhật</button>
+            <a href="{{ url_for('doctor') }}" class="btn-back">← Quay lại</a>
+        </form>
+    </div>
+</body>
+</html>

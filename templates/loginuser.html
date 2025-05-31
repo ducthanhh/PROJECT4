@@ -2,14 +2,23 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Đăng nhập quản trị</title>
+    <title>Đăng nhập người dùng</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
         .login-container {
-            max-width: 400px;
-            margin: 80px auto;
+            max-width: 300px;
+            width: 100%;
             background-color: #ffffff;
-            padding: 40px;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -17,13 +26,13 @@
 
         h2 {
             color: #2980b9;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         input[type="text"], input[type="password"] {
             width: 100%;
-            padding: 12px;
-            margin: 12px 0;
+            padding: 10px;
+            margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 6px;
         }
@@ -31,7 +40,7 @@
         button {
             background-color: #2980b9;
             color: white;
-            padding: 12px 20px;
+            padding: 10px 15px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
@@ -51,9 +60,8 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>Đăng nhập quản trị</h2>
-
-        {% with messages = get_flashed_messages() %}
+        <h2>Đăng nhập người dùng</h2>
+            {% with messages = get_flashed_messages() %}
           {% if messages %}
             <div class="error">
               {% for message in messages %}
@@ -63,11 +71,14 @@
           {% endif %}
         {% endwith %}
 
-        <form method="POST">
-            <input type="text" name="username" placeholder="Tên đăng nhập" required>
-            <input type="password" name="password" placeholder="Mật khẩu" required>
+        <form action="{{ url_for('loginuser') }}" method="POST">
+            <input type="text" name="ten_dang_nhap" placeholder="Tên đăng nhập" required><br>
+            <input type="password" name="mat_khau" placeholder="Mật khẩu" required><br>
             <button type="submit">Đăng nhập</button>
         </form>
+
+        <p>Chưa có tài khoản? <a href="{{ url_for('add_user') }}">Tạo tài khoản</a></p>
     </div>
 </body>
 </html>
+

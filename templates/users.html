@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách người dùng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Danh sách người dùng</h2>
+    <a href="{{ url_for('add_user') }}" class="btn">+ Thêm người dùng</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Tên đăng nhập</th>
+                <th>Vai trò</th>
+                <th>Ngày tạo</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+            <tr>
+                <td>{{ u.ten_dang_nhap }}</td>
+                <td>{{ u.vai_tro }}</td>
+                <td>{{ u.ngay_tao.strftime('%d-%m-%Y %H:%M') }}</td>
+                <td>
+                    <a href="{{ url_for('edit_user', id=u.id) }}" class="btn-small">Sửa</a>
+                    <a href="{{ url_for('delete_user', id=u.id) }}" class="btn-small danger" onclick="return confirm('Xóa người dùng này?')">Xóa</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Quay lại </a>
+</div>
+</body>
+</html>

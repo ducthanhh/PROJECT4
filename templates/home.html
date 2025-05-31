@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Phòng khám ABC - Trang chủ</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(270deg, #4a90e2,rgb(164, 202, 241),rgb(50, 97, 183));
+      background-size: 600% 600%;
+      animation: bgAnimation 30s ease infinite;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+
+    /* Background gradient animation */
+    @keyframes bgAnimation {
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    header {
+      background: rgba(255 255 255 / 0.1);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      animation: pulse 4s infinite;
+    }
+    header p {
+      font-size: 1.25rem;
+      font-weight: 300;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Pulse animation for header */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); color: #fff;}
+      50% { transform: scale(1.05); color: #a8d0ff;}
+    }
+
+    main {
+      flex: 1;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: rgba(255 255 255 / 0.9);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      min-height: 600px;
+    }
+
+    .intro {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 50px;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s forwards 0.3s;
+    }
+    .intro-text {
+      flex: 1 1 400px;
+    }
+    .intro-text h2 {
+      font-size: 2rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+    .intro-text p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .intro-image {
+      flex: 1 1 400px;
+      text-align: center;
+    }
+    .intro-image img {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .intro-image img:hover {
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+
+    /* Features section */
+    section.features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-bottom: 60px;
+    }
+    .feature-box {
+      background: white;
+      flex: 1 1 250px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s forwards;
+    }
+    .feature-box:nth-child(1) { animation-delay: 0.5s; }
+    .feature-box:nth-child(2) { animation-delay: 0.7s; }
+    .feature-box:nth-child(3) { animation-delay: 0.9s; }
+    .feature-box:nth-child(4) { animation-delay: 1.1s; }
+
+    .feature-box:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 12px 26px rgba(53, 122, 189, 0.4);
+      background-color: #e8f0fe;
+      cursor: pointer;
+    }
+    .feature-box h3 {
+      margin-bottom: 15px;
+      color: #357ABD;
+      font-size: 1.5rem;
+      user-select: none;
+    }
+    .feature-box p {
+      color: #666;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2c3e50;
+      color: #aaa;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+      margin-top: auto;
+      user-select: none;
+    }
+
+    /* Fade in up animation */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .intro {
+        flex-direction: column;
+      }
+      .feature-box {
+        flex: 1 1 100%;
+      }
+    }
+
+    /* Animated SVG heartbeat */
+    .heartbeat {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 15px auto;
+      animation: heartbeatAnim 1.5s ease-in-out infinite;
+      fill: #e74c3c;
+    }
+    @keyframes heartbeatAnim {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    .actions {
+  margin: 40px auto;
+  text-align: center;
+}
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.btn {
+  display: inline-block;
+  padding: 15px 30px;
+  background: #357abd;
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.btn:hover {
+  background: #1e3c72;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+
+.footer {
+  background-color: #f5f5f5;
+  padding: 40px 20px;
+  margin-top: 60px;
+  border-top: 1px solid #ddd;
+}
+.footer .contact-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.footer .contact-info h3 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+.footer .contact-info p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+.footer .map {
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Phòng khám NVT</h1>
+    <p>Chăm sóc sức khỏe toàn diện - Tận tâm phục vụ</p>
+  </header>
+  <main>
+    <div class="intro" id="about">
+      <div class="intro-text">
+        <h2>Giới thiệu về phòng khám</h2>
+        <p>
+          Phòng khám NVT tự hào là địa chỉ chăm sóc sức khỏe uy tín với đội ngũ bác sĩ chuyên môn cao, trang thiết bị hiện đại,
+          mang đến dịch vụ khám chữa bệnh chất lượng, thân thiện và nhanh chóng. Chúng tôi luôn đặt sức khỏe của bệnh nhân lên hàng đầu
+          và cam kết đồng hành cùng bạn trên con đường chăm sóc sức khỏe.
+        </p>
+      </div>
+      <div class="intro-image">
+        <img src="https://phongkhamdakhoahn.net/assets/public/images/intro/thumb_04.jpg" alt="Phòng khám hiện đại" />
+      </div>
+    </div>
+
+
+    <section class="features" id="features">
+        <section class="actions" id="actions">
+  <h2 style="text-align: center; margin-bottom: 20px; color: #2c3e50;">Chức năng truy cập nhanh</h2>
+  <div class="action-buttons">
+    <a href="/login" class="btn">🔐 Đăng nhập quản trị</a>
+    <a href="/loginuser" class="btn">đăng nhập người dùng</a>
+    <a href="/appointment" class="btn">📅 Xem lịch khám</a>
+    <a href="/doctor" class="btn">👨‍⚕️ Xem danh sách bác sĩ</a>
+    <a href="/medicine" class="btn">💊 Xem danh sách thuốc</a>
+  </div>
+</section>
+
+      <div class="feature-box">
+        <!-- SVG trái tim nhịp đập -->
+        <svg class="heartbeat" viewBox="0 0 32 29.6" xmlns="http://www.w3.org/2000/svg" aria-label="Tim nhịp đập">
+          <path d="M23.6 0c-3 0-5.6 1.7-7 4.3C14 1.7 11.4 0 8.4 0 3.8 0 0 3.8 0 8.4c0 9.3 16 21.2 16 21.2s16-11.9 16-21.2c0-4.6-3.8-8.4-8.4-8.4z"/>
+        </svg>
+        <h3>Bác sĩ chuyên khoa</h3>
+        <p>Đội ngũ bác sĩ giàu kinh nghiệm và tận tâm với từng bệnh nhân.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Trang thiết bị hiện đại</h3>
+        <p>Cơ sở vật chất và thiết bị khám chữa bệnh đạt chuẩn quốc tế.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Dịch vụ tiện lợi</h3>
+        <p>Đặt lịch khám online nhanh chóng, giảm thời gian chờ đợi.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Hỗ trợ tận tình</h3>
+        <p>Nhân viên thân thiện, sẵn sàng hỗ trợ và tư vấn 24/7.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Phòng khám ABC. Bản quyền thuộc về Phòng khám ABC.
+  </footer>
+  <footer class="footer">
+  <div class="contact-info">
+    <h3>Liên hệ với chúng tôi</h3>
+    <p><strong>Địa chỉ:</strong> 28A Lê Trọng Tấn, Hà Đông, Hà Nội</p>
+    <p><strong>Điện thoại:</strong> 0243 123 4567</p>
+    <p><strong>Email:</strong> lienhe@phongkham.com</p>
+
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.736677397609!2d105.76154267507896!3d20.963087280669825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454cabc683f57%3A0xdb02223a0620af21!2zxJDhuqFpIGjhu41jIE5ndXnhu4VuIFRyw6Np!5e0!3m2!1svi!2s!4v1748621949861!5m2!1svi!2s"
+            width="100%"
+            height="350"
+            style="border:0; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</div>
+
+  <p style="text-align:center; padding: 10px; color: #888;">&copy; 2025 Phòng Khám NVT. Mọi quyền được bảo lưu.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm người dùng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Thêm người dùng mới</h2>
+    <form method="POST">
+        <label>Tên đăng nhập:</label>
+        <input type="text" name="ten_dang_nhap" required>
+
+        <label>Mật khẩu:</label>
+        <input type="password" name="mat_khau" required>
+
+        <label>Vai trò:</label>
+        <select name="vai_tro" required>
+            <option value="admin">Admin</option>
+            <option value="bac_si">Bác sĩ</option>
+            <option value="benh_nhan">Bệnh nhân</option>
+        </select>
+
+        <button type="submit" class="btn">Lưu</button>
+        <a href="{{ url_for('users') }}" class="btn btn-secondary">Quay lại</a>
+    </form>
+</div>
+</body>
+</html>

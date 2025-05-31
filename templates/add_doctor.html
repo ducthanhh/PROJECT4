@@ -1,8 +1,142 @@
-<h1>Thêm bác sĩ mới</h1>
-<form method="POST">
-    <label>Họ tên:</label><input type="text" name="ho_ten"><br>
-    <label>Chuyên khoa:</label><input type="text" name="chuyen_khoa"><br>
-    <label>Số điện thoại:</label><input type="text" name="so_dien_thoai"><br>
-    <input type="submit" value="Thêm">
-</form>
-<a href="{{ url_for('doctor') }}">Quay lại</a>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thêm bác sĩ mới</title>
+<style>
+    /* Tổng thể */
+    html, body {
+        height: 100%;
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(to right, #ecf0f1, #fdfdfd);
+        color: #2c3e50;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Container trung tâm */
+    .container {
+        background-color: #ffffff;
+        padding: 40px 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-in-out;
+        width: 400px;
+        max-width: 90vw;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    /* Tiêu đề */
+    h1 {
+        color: #2980b9;
+        margin-bottom: 30px;
+        font-size: 36px;
+        font-weight: 700;
+    }
+
+    /* Form */
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    label {
+        font-weight: 600;
+        color: #34495e;
+        text-align: left;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    input[type="text"] {
+        padding: 12px 14px;
+        border: 1px solid #bdc3c7;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    input[type="text"]:focus {
+        border-color: #2980b9;
+        outline: none;
+    }
+
+    /* Nút */
+    input[type="submit"] {
+        background-color: #2ecc71;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #27ae60;
+        transform: translateY(-2px);
+    }
+
+    /* Nút quay lại */
+    a.btn-back {
+        display: inline-block;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        background-color: #34495e;
+        color: white;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        margin-top: 20px;
+    }
+
+    a.btn-back:hover {
+        background-color: #2c3e50;
+        transform: translateY(-2px);
+    }
+
+    /* Hiệu ứng */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+        .container {
+            width: 90vw;
+            padding: 30px 20px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thêm bác sĩ mới</h1>
+        <form method="POST">
+            <label for="ho_ten">Họ tên:</label>
+            <input type="text" id="ho_ten" name="ho_ten" required>
+
+            <label for="chuyen_khoa">Chuyên khoa:</label>
+            <input type="text" id="chuyen_khoa" name="chuyen_khoa" required>
+
+            <label for="so_dien_thoai">Số điện thoại:</label>
+            <input type="text" id="so_dien_thoai" name="so_dien_thoai" required>
+
+            <input type="submit" value="Thêm">
+        </form>
+        <a class="btn-back" href="{{ url_for('doctor') }}">Quay lại</a>
+    </div>
+</body>
+</html>
+

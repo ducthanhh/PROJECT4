@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đặt lịch khám</title>
+</head>
+<body>
+    <h2>🩺 Đặt lịch khám</h2>
+    <form method="POST">
+        <label for="id_bac_si">Chọn bác sĩ:</label><br>
+        <select name="id_bac_si" required>
+            {% for bac_si in bac_si_list %}
+            <option value="{{ bac_si.id }}">{{ bac_si.ho_ten }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="thoi_gian_hen">Thời gian khám:</label><br>
+        <input type="datetime-local" name="thoi_gian_hen" required><br><br>
+
+        <label for="trieu_chung">Triệu chứng:</label><br>
+        <textarea name="trieu_chung" rows="4" cols="40" required></textarea><br><br>
+
+        <button type="submit">📝 Xác nhận đặt lịch</button>
+    </form>
+    <br>
+    <a href="{{ url_for('dashboard_benh_nhan') }}">⬅ Quay lại lịch hẹn</a>
+</body>
+</html>
